@@ -4,6 +4,8 @@ import kukim.core.AppConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,8 +16,8 @@ class MemberServiceTest {
 
     @BeforeEach
     void init() {
-        AppConfig appConfig = new AppConfig();
-        memberService = appConfig.memberService();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        memberService = applicationContext.getBean("memberService", MemberService.class);
     }
 
     @AfterEach

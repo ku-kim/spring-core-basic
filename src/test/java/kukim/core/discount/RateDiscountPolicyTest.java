@@ -1,17 +1,26 @@
 package kukim.core.discount;
 
+import kukim.core.AppConfig;
 import kukim.core.member.Grade;
 import kukim.core.member.Member;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.cglib.core.VisibilityPredicate;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RateDiscountPolicyTest {
 
-    RateDiscountPolicy discountPolicy = new RateDiscountPolicy();
+    DiscountPolicy discountPolicy;
+
+    @BeforeEach
+    void init() {
+        discountPolicy = new FixDiscountPolicy();
+    }
 
     @Test
     @DisplayName("VPI는 10%할인 되어야한다.")
