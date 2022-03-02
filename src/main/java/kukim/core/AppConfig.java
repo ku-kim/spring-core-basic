@@ -1,5 +1,6 @@
 package kukim.core;
 
+import kukim.core.discount.DiscountPolicy;
 import kukim.core.discount.FixDiscountPolicy;
 import kukim.core.discount.RateDiscountPolicy;
 import kukim.core.member.MemberRepository;
@@ -15,7 +16,7 @@ public class AppConfig {
         return new MemberServiceImpl(memberRepository());
     }
 
-    private MemoryMemberRepository memberRepository() {
+    private MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
@@ -23,8 +24,8 @@ public class AppConfig {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
-    private FixDiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+    private DiscountPolicy discountPolicy() {
+        return new RateDiscountPolicy();
     }
 
 }
