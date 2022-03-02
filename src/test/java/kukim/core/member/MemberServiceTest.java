@@ -1,5 +1,6 @@
 package kukim.core.member;
 
+import kukim.core.AppConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,8 @@ class MemberServiceTest {
 
     @BeforeEach
     void init() {
-        memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
     }
 
     @AfterEach

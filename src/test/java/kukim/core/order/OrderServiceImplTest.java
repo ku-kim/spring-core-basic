@@ -1,5 +1,6 @@
 package kukim.core.order;
 
+import kukim.core.AppConfig;
 import kukim.core.member.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +16,9 @@ class OrderServiceImplTest {
 
     @BeforeEach
     void init() {
-        memberService = new MemberServiceImpl();
-        orderService = new OrderServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
     }
 
     @AfterEach
