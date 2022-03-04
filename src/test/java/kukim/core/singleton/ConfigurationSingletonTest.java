@@ -29,4 +29,14 @@ public class ConfigurationSingletonTest {
         assertThat(memberRepository).isSameAs(memberRepository1);
         assertThat(memberRepository).isSameAs(memberRepository2);
     }
+
+    @Test
+    @DisplayName("configuration과 바이트코드")
+    void configurationDepp() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        AppConfig bean = ac.getBean(AppConfig.class);
+        System.out.println("bean.getClass() = " + bean.getClass());
+
+    }
 }
