@@ -2,7 +2,9 @@ package kukim.core.discount;
 
 import kukim.core.member.Grade;
 import kukim.core.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountRateAmount = 10;
