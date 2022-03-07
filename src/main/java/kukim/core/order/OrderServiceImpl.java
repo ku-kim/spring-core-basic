@@ -1,5 +1,6 @@
 package kukim.core.order;
 
+import kukim.core.annoation.MainDiscountPolicy;
 import kukim.core.discount.DiscountPolicy;
 import kukim.core.member.Member;
 import kukim.core.member.MemberRepository;
@@ -15,7 +16,7 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
