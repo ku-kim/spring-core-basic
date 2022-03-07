@@ -1,26 +1,17 @@
 package kukim.core.order;
 
 import kukim.core.discount.DiscountPolicy;
-import kukim.core.discount.FixDiscountPolicy;
-import kukim.core.discount.RateDiscountPolicy;
 import kukim.core.member.Member;
 import kukim.core.member.MemberRepository;
-import kukim.core.member.MemoryMemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
-
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
